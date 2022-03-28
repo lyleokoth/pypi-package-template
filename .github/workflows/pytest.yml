@@ -33,3 +33,9 @@ jobs:
       - name: Run test suite
         run: |
           pipenv run test -v
+      - name: Update Version
+        run: |
+          pipenv run cz bump
+      - name: Creating the Changelog
+        run: |
+          pipenv run cz changelog

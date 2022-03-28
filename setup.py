@@ -1,11 +1,18 @@
 import setuptools
+import toml
+from os.path import join, dirname, abspath
+
+pyproject_path = join(dirname(abspath("__file__")), '../pyproject.toml')
+file = open(pyproject_path, "r")
+toml_str = file.read()
+parsed_toml = toml.loads(toml_str)
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="lyle",
-    version="0.1.0",
+    version=parsed_toml['tool']['commitizen']['version'],
     author="Lyle Okoth",
     author_email="lyleokoth@gmail.com",
     description="Demo your first Pip package.",
